@@ -14,7 +14,7 @@ This should have created a data.tar.gz file in the data directory that contains 
 
 data.tar.gz should be uploaded to the folder on the server that has the same folder structure (json, nucleotides, meta).
 
-Uncompress data.tar.gz in that directory and the folders with the new ds should appear next to these (Check!). 
+Uncompress data.tar.gz in that directory and the folders with the new ds should appear next to the old ones (e.g. if you added Sheng_2017, it should appear in the json, nucleotides and meta on the server) (Check!). 
 
 Scripts to update the data server-side should still be there but for completeness, they should achieve the following:
 
