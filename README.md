@@ -2,7 +2,7 @@
 
 Scripts to update OAS.
 
-#How.
+# How-To.
 
 Put the raw data in data/raw. e.g. data/raw/Sheng
 
