@@ -2,18 +2,13 @@
 
 dataset=$1
 
-#Creaate the folder structure.
-echo "Creating data structure for  $dataset";
-python ProcessData.py parallel_datasets
+#Move the data to the format we want.
+python NameDatasets.py $dataset
 
-#Split into genes in genes and create basic stats in stats
-echo "Getting gene stats for $dataset";
-python ProcessData.py read_single_dataset $dataset
+#Remove any previous compressed files.
+rm -f json.tar.gz nucleotides.tar.gz meta.tar.gz
+#Now compress...
+cd ../data
+tar -zcvf data.tar.gz json nucleotides meta
 
-#Create the gene counts in genes_stats.
-echo "Preforming further analytics on $dataset";
-python Analytics.py gene_counts $dataset
-
-#Calculate cdr stats that are in data/cdrs_stats
-echo "Calculating CDR stats for $dataset";
-python CDR.py calculate_stats $dataset
+#scp data.tar.gz [path on the server]

@@ -16,7 +16,7 @@ if __name__ == '__main__':
 		if element != dsname:
 			continue
 		if not isfile(join(pickle_datasets_location,element)):
-			print '->',element
+			
 			author = ""
 			for f in list_file_paths(join(pickle_datasets_location,element)):
 				if '.json' in f:
@@ -30,11 +30,16 @@ if __name__ == '__main__':
 					while '__' in author:
 						author = author.replace('__','_')
 			#Move the file.
-			print "Moving..."
+			print "Moving...",element
 			i = 0
 			source_location= join(pickle_datasets_location,element)
 			target_location = join(pickle_datasets_location,author)
+			print "New name is",author
 			while os.path.exists(target_location):
 				target_location+=random_elements[i]
 				i+=1
 			os.system('mv '+source_location+' '+target_location)
+			#Now process the data
+			from PrepareData import load_dataset
+			print "Processing data..."
+			load_dataset(author)
